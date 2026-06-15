@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAGO Company Attendance Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+  <div class="glow-container">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+  </div>
+
+  <header class="app-header">
+    <div class="brand">
+      <span class="logo-icon">⚡</span>
+      <div class="brand-text">
+        <h1>SAGO</h1>
+        <p>Enterprise Attendance Hub</p>
+      </div>
+    </div>
+    <div class="notion-badge">
+      <span class="badge-dot pulse"></span>
+      <span class="badge-text">Connected to Notion Hub</span>
+    </div>
+  </header>
+
+  <main class="app-container">
+    <!-- Left Column: Clock and Check-in Action -->
+    <section class="control-panel glass-card">
+      <div class="clock-widget">
+        <div id="digital-clock" class="digital-clock">00:00:00</div>
+        <div id="current-date" class="current-date">Wednesday, June 10, 2026</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <form id="attendance-form" class="checkin-form">
+        <h2>Register Attendance</h2>
+        
+        <div class="input-group">
+          <label for="employee-select">Employee Name</label>
+          <select id="employee-select" required>
+            <option value="" disabled selected>Select your name</option>
+            <option value="Gokulakrishnan">Gokulakrishnan</option>
+            <option value="Alex Johnson">Alex Johnson</option>
+            <option value="Sarah Chen">Sarah Chen</option>
+            <option value="Elena Rostova">Elena Rostova</option>
+            <option value="Marcus Miller">Marcus Miller</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="status-select">Status</label>
+          <select id="status-select" required>
+            <option value="Present" selected>Present</option>
+            <option value="Late">Late (Delayed)</option>
+            <option value="On Leave">On Leave</option>
+            <option value="Absent">Absent</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="check-notes">Work Notes / Focus Area</label>
+          <textarea id="check-notes" rows="3" placeholder="What are you focusing on today?"></textarea>
+        </div>
+
+        <button type="submit" id="submit-btn" class="btn btn-primary btn-glow">
+          <span class="btn-content">
+            <span class="icon">✨</span>
+            <span class="text">Log Check-In</span>
+          </span>
+        </button>
+      </form>
+    </section>
+
+    <!-- Right Column: Live Logs and Notion Sync status -->
+    <section class="logs-panel glass-card">
+      <div class="panel-header">
+        <h2>Today's Attendance Logs</h2>
+        <div class="actions">
+          <button id="sync-notion-btn" class="btn btn-secondary">
+            <span>🔄 Sync to Notion</span>
+          </button>
+          <button id="clear-logs-btn" class="btn btn-danger">Clear Local</button>
+        </div>
+      </div>
+
+      <div class="notion-sync-banner hidden" id="sync-status-banner">
+        <div class="sync-loader"></div>
+        <p>Syncing entries to Notion page (ID: 37be8eec...)</p>
+      </div>
+
+      <div class="table-container">
+        <table class="logs-table">
+          <thead>
+            <tr>
+              <th>Employee</th>
+              <th>Time</th>
+              <th>Status</th>
+              <th>Focus / Notes</th>
+              <th>Notion Sync</th>
+            </tr>
+          </thead>
+          <tbody id="logs-body">
+            <!-- Dynamic Logs will be inserted here -->
+            <tr class="empty-state">
+              <td colspan="5">No attendance logs registered today. Use the left panel to check in.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="notion-info">
+        <h3>Notion Integration Info</h3>
+        <p>This portal creates child pages directly under your Notion parent page:</p>
+        <div class="notion-link-box">
+          <strong>Parent Page ID:</strong> 
+          <code>37be8eec-19fb-8156-a9fe-fa38af55f080</code>
+          <a href="https://app.notion.com/p/Company-Attendance-Hub-37be8eec19fb8156a9fefa38af55f080" target="_blank" class="notion-link">Open in Notion ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>&copy; 2026 SAGO Enterprise. All rights reserved. Real-time synced through Notion MCP.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
